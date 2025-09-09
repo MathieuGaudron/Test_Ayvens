@@ -11,6 +11,7 @@ public class InMemoryVehiculeRepository : IVehiculeRepository
             new KeyValuePair<int, Vehicule>(1, new Vehicule { Id = 1, Marque = "Porsche", Modele = "Macan", Annee = 2020, Kilometrage = 145000 }),
             new KeyValuePair<int, Vehicule>(2, new Vehicule { Id = 2, Marque = "Nissan",  Modele = "GTR",   Annee = 2021, Kilometrage = 150000 }),
             new KeyValuePair<int, Vehicule>(3, new Vehicule { Id = 3, Marque = "Audi",    Modele = "R8",    Annee = 2019, Kilometrage = 90000  }),
+            new KeyValuePair<int, Vehicule>(4, new Vehicule { Id = 4, Marque = "VoitureTest",    Modele = "Delete",    Annee = 2000, Kilometrage = 100  }),
         });
 
     public IEnumerable<Vehicule> GetAll() => _data.Values;
@@ -19,5 +20,10 @@ public class InMemoryVehiculeRepository : IVehiculeRepository
     {
         _data.TryGetValue(id, out var vehicule);
         return vehicule;
+    }
+
+    public bool Delete(int id)
+    {
+        return _data.TryRemove(id, out _);
     }
 }
