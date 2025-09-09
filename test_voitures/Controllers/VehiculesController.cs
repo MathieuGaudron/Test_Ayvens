@@ -14,7 +14,7 @@ public class VehiculesController : ControllerBase
 
 
 
-// route qui récupère tous les véhicules par ordre d'id croissant
+    // route qui récupère tous les véhicules par ordre d'id croissant
     [HttpGet]
     public ActionResult<IEnumerable<Vehicule>> GetAll()
     {
@@ -23,11 +23,23 @@ public class VehiculesController : ControllerBase
     }
 
 
-// route qui récupère un véhicule par id    
+    // route qui récupère un véhicule par id    
     [HttpGet("{id:int}")]
     public ActionResult<Vehicule> GetById(int id)
     {
         var v = _repo.GetById(id);
         return v is null ? NotFound() : Ok(v);
     }
+    
+
+    // route qui supprime un véhicule par id
+    [HttpDelete("{id:int}")]
+    public IActionResult Delete(int id)
+    {
+        return _repo.Delete(id) ? NoContent() : NotFound();
+    }
+
+
 }
+
+
