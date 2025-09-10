@@ -1,0 +1,45 @@
+ - - - API VEHICULE AYVENS TEST TECHNIQUE - - -
+
+API REST en C#/.NET 8 — données mockées en mémoire.  
+Endpoints: GET all/ID, DELETE. 
+
+
+
+
+
+ - - - Lancer l'api - - -
+
+dotnet run
+
+
+
+ 
+- - - ENDPOINTS - - -
+
+GET     /vehicules
+GET     /vehicules/{id}
+DELETE  /vehicules/{id}
+
+
+- - - TESTER AVEC SWAGGER - - -
+
+Ouvrir : http://localhost:5173/swagger
+→ Cliquer sur "Try it out" pour exécuter les requêtes
+
+
+- - - TESTS RAPIDES (curl) - - -
+
+GET all
+curl -s http://localhost:5173/vehicules
+
+GET id
+curl -i http://localhost:5173/vehicules/2
+
+DELETE id
+curl -i -X DELETE http://localhost:5173/vehicules/4
+
+
+
+
+
+
